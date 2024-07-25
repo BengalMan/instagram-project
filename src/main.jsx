@@ -6,7 +6,9 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import './index.css'
-import LoginScreen from "./ui/auth/LoginScreen.jsx";
+import './data/firebase/firebase.js'
+import LoginScreen, {loginScreenAction} from "./ui/auth/LoginScreen.jsx";
+import AppLayout from "./ui/app/AppLayout.jsx";
 
 const router = createBrowserRouter([
     {
@@ -16,6 +18,11 @@ const router = createBrowserRouter([
     {
         path: "/login",
         element: <LoginScreen/>,
+        action: loginScreenAction,
+    },
+    {
+        path: "/app",
+        element: <AppLayout/>,
     },
 ]);
 

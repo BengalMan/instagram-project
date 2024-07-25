@@ -6,9 +6,10 @@ import FormPasswordInput from "../../components/forms/FormPasswordInput.jsx";
 const LoginForm = () => {
 
   return (
-    <Form className={"flex flex-col w-64 items-center"}>
+    <Form className={"flex flex-col w-64 items-center"} method={'post'}>
       <h1 className={"text-2xl font-bold mb-4"}>Login</h1>
-      <FormInput name={"username"} label={"Username"} required/>
+      <input type={"hidden"}  name={"formId"} value={'login'}/>
+      <FormInput name={"email"} label={"Email"} type={'email'} required/>
       <FormPasswordInput name={"password"} label={"Password"} type="password" required/>
       <Button className={"mt-4"} text={"login"} type="submit"/>
     </Form>
