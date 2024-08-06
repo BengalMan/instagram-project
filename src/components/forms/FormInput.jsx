@@ -1,24 +1,23 @@
 const FormInput = ({
-    name,
-    type,
-    label,
-    required,
-    className,
+  className,
+  name,
+  type,
+  label,
+  required,
 }) => {
-return(
-    <div className="flex flex-col gap-1">
-        <label htmlFor={name}>{label}</label>
-        <input
-            className={`border border-black rounded px-2 py-1 ${className}`}
-            id={name}
-            key={name}
-            name={name}
-            type={type || "text"}
-            required={required}
-        />
+  return (
+    <div className={`flex flex-col gap-1 ${className}`}>
+      <label htmlFor={name}>{label}</label>
+      <input
+        className={"border border-black rounded px-2 py-1"}
+        key={name}
+        id={name}
+        name={name}
+        type={type || "text"}
+        required={required}
+      />
     </div>
-
-)
+  )
 }
 
-export default FormInput
+export default FormInput;

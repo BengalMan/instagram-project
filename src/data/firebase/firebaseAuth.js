@@ -1,33 +1,36 @@
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  updateProfile,
+  signOut
+} from "firebase/auth";
 
 const auth = getAuth();
 
 export const signInUser = async (email, password) => {
   try {
-    const userCredental = await signInWithEmailAndPassword(auth, email, password);
-    const user = userCredental.user
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user
     localStorage.setItem("token", user.accessToken)
     return {user}
-  }
-  catch (error) {
-    console.log(error);
+  } catch (error) {
+    console.error(error)
     return {error}
   }
 }
 
-
 export const registerUser = async (username, email, password) => {
   try {
-    const userCredental = await createUserWithEmailAndPassword(auth, email, password);
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     await updateProfile(auth.currentUser, {
-      displayName: username,
+      displayName: username
     })
-    const user = userCredental.user
+    const user = userCredential.user
     localStorage.setItem("token", user.accessToken)
     return {user}
-  }
-  catch (error) {
-    console.log(error);
+  } catch (error) {
+    console.error(error)
     return {error}
   }
 }
